@@ -1,0 +1,13 @@
+package com.university.academic_portal;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AcademicPortalApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(AcademicPortalApplication.class, args);
+	}
+
+}
