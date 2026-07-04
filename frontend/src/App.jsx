@@ -1,17 +1,54 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthLayout from "./layouts/AuthLayout";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-function App(){
+import MainLayout from "./layouts/MainLayout";
 
-  return (
-  <BrowserRouter>
-    <Routes>
-      <Route path = "/" element = {<Login />} />
-      <Route path = "/register" element = {<Register />} />
-    </Routes>
-  </BrowserRouter>
-  );
+import Dashboard from "./pages/Dashboard";
+import Faculty from "./pages/Faculty";
+import Student from "./pages/Student";
+import Subject from "./pages/Subject";
+
+function App() {
+
+    return (
+
+        <BrowserRouter>
+
+            <Routes>
+
+                {/* Login Register */}
+
+                <Route element={<AuthLayout />}>
+
+                    <Route path="/" element={<Login />} />
+
+                    <Route path="/register" element={<Register />} />
+
+                </Route>
+
+                {/* Dashboard */}
+
+                <Route element={<MainLayout />}>
+
+                    <Route path="/dashboard" element={<Dashboard />} />
+
+                    <Route path="/faculty" element={<Faculty />} />
+
+                    <Route path="/student" element={<Student />} />
+
+                    <Route path="/subject" element={<Subject />} />
+
+                </Route>
+
+            </Routes>
+
+        </BrowserRouter>
+
+    );
+
 }
 
 export default App;

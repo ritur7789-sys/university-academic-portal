@@ -1,0 +1,29 @@
+.container-fluid{
+
+    padding:30px;
+
+}
+
+.dashboard-card{
+
+    transition:.3s;
+    cursor:pointer;
+    border-radius:15px;
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+@media(max-width:991px){
+
+    .container-fluid{
+
+        padding:18px;
+
+    }
+
+}

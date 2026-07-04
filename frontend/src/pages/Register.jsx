@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/amity_logo.png";
 
-function Register(){
+function Register() {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         employeeId: "",
@@ -17,53 +20,217 @@ function Register(){
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         });
     };
 
     const handleRegister = async () => {
+
+        if (formData.password !== formData.repeatPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
         try {
+
             const response = await axios.post(
                 "http://localhost:8080/api/auth/register",
                 formData
             );
 
             alert(response.data);
-        } catch (error){
+
+            navigate("/");
+
+        } catch (error) {
+
             console.error(error);
-            alert("Registration failed");
+            alert("Registration Failed");
 
         }
+
     };
 
     return (
 
-        <div>
-           <p>Register</p>
-           <input type="text" name="employeeId" placeholder="Employee Id" onChange={handleChange}></input>
-           <br /><br />
-           <input type="text" name= "name" placeholder="Name" onChange={handleChange}></input>
-           <br /><br />
-           <input type="email" name="email" placeholder="Email" onChange={handleChange}></input>
-           <br /><br />
-           <input type="password" name= "password" placeholder="password" onChange={handleChange}></input>
-           <br /><br />
-           <input type="password" name= "repeatPassword" placeholder="repeatPassword" onChange={handleChange}></input>
-           <br /><br />
-           <input type="text" name="department" placeholder="Department" onChange={handleChange}></input>
-           <br /><br />
-           <input type="text" name="university" placeholder="University" onChange={handleChange}></input>
-           <br /><br />
-           
+        <div className="auth-card">
 
-           <button onClick={handleRegister}>Register</button>
-           <br /><br />
+            <div className="logo-container">
 
-           <p>
-               Already have an account? <Link to="/">Login</Link>
-           </p>
+                <img
+                    src={logo}
+                    alt="Amity University"
+                    className="login-logo"
+                />
+
+                <div className="logo-title">
+                    AMITY UNIVERSITY
+                </div>
+
+            </div>
+
+            <h2>Create Account</h2>
+
+            <p className="login-subtitle">
+                Register to continue
+            </p>
+
+            {/* Employee ID */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-person-badge"></i>
+                </span>
+
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Employee ID"
+                    name="employeeId"
+                    value={formData.employeeId}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            {/* Name */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-person"></i>
+                </span>
+
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Full Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            {/* Department */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-building"></i>
+                </span>
+
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Department"
+                    name="department"
+                    value={formData.department}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            {/* University */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-bank"></i>
+                </span>
+
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="University"
+                    name="university"
+                    value={formData.university}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            {/* Role */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-person-workspace"></i>
+                </span>
+
+                <select
+                    className="form-select"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                >
+                    <option value="FACULTY">Faculty</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="STUDENT">Student</option>
+                </select>
+
+            </div>
+
+            {/* Password */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-lock"></i>
+                </span>
+
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            {/* Confirm Password */}
+
+            <div className="input-group">
+
+                <span className="input-group-text">
+                    <i className="bi bi-shield-lock"></i>
+                </span>
+
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Confirm Password"
+                    name="repeatPassword"
+                    value={formData.repeatPassword}
+                    onChange={handleChange}
+                />
+
+            </div>
+
+            <button
+                className="btn btn-primary btn-login"
+                onClick={handleRegister}
+            >
+                Create Account
+            </button>
+
+            <p className="register-link">
+
+                Already have an account?
+
+                <Link to="/">
+                    Login
+                </Link>
+
+            </p>
+
         </div>
-    )
+
+    );
+
 }
 
 export default Register;

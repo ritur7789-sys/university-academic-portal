@@ -1,0 +1,39 @@
+.sidebar{
+
+    width:260px;
+    min-height:100vh;
+    background:#fff;
+    transition:.3s;
+
+}
+
+@media(max-width:991px){
+
+    .sidebar{
+
+        width:70px;
+
+    }
+
+    .sidebar h4{
+
+        display:none;
+
+    }
+
+    .sidebar .list-group-item{
+
+        text-align:center;
+        font-size:0;
+
+        padding:18px 0;
+
+    }
+
+    .sidebar .list-group-item i{
+
+        font-size:22px;
+
+    }
+
+}
