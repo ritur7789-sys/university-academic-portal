@@ -1,20 +1,28 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
-function MainLayout(){
+function MainLayout() {
 
-    return(
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    return (
 
         <>
 
-            <Navbar/>
+            <Navbar
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}
+            />
 
             <div className="main-container">
 
-                <Sidebar/>
+                <Sidebar sidebarOpen={sidebarOpen} />
 
-                <div className="content">
+                <div
+                    className={`content ${sidebarOpen ? "expanded" : "collapsed"}`}
+                >
 
                     <div className="page-content">
 

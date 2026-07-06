@@ -1,3 +1,5 @@
+import "../styles/dashboard.css";
+
 function Dashboard() {
 
     const cards = [

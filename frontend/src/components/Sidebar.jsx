@@ -1,96 +1,80 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../styles/sidebar.css";
+import logo from "../assets/amity_logo.png";
 
-function Sidebar(){
+function Sidebar({ sidebarOpen }) {
 
-    return(
+    return (
 
-        <div className="sidebar bg-white border-end">
+        <aside className={`sidebar ${sidebarOpen ? "" : "collapsed"}`}>
 
-            <h4 className="text-center mt-4">
+            <div className="sidebar-logo">
 
-                Menu
+    <img src={logo} alt="logo" />
 
-            </h4>
+    {sidebarOpen && (
 
-            <hr/>
+        <div className="logo-text">
 
-            <div className="list-group list-group-flush">
+            <h5>University</h5>
 
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/dashboard"
-                >
-                    <i className="bi bi-speedometer2"></i>
-
-                    {" "}Dashboard
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/faculty"
-                >
-                    <i className="bi bi-person-workspace"></i>
-
-                    {" "}Faculty
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/student"
-                >
-                    <i className="bi bi-mortarboard"></i>
-
-                    {" "}Students
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/subject"
-                >
-                    <i className="bi bi-book"></i>
-
-                    {" "}Subjects
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/publications"
-                >
-                    <i className="bi bi-journal-text"></i>
-
-                    {" "}Publications
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/ipr"
-                >
-                    <i className="bi bi-award"></i>
-
-                    {" "}IPR
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/events"
-                >
-                    <i className="bi bi-calendar-event"></i>
-
-                    {" "}Events
-                </Link>
-
-                <Link
-                    className="list-group-item list-group-item-action"
-                    to="/logout"
-                >
-                    <i className="bi bi-box-arrow-right"></i>
-
-                    {" "}Logout
-                </Link>
-
-            </div>
+            <small>Academic Portal</small>
 
         </div>
+
+    )}
+
+</div>
+
+            <div className="menu-section">
+
+    <NavLink to="/dashboard" className="sidebar-link">
+        <i className="bi bi-speedometer2"></i>
+        {sidebarOpen && <span>Dashboard</span>}
+    </NavLink>
+
+    <NavLink to="/faculty" className="sidebar-link">
+        <i className="bi bi-person-workspace"></i>
+        {sidebarOpen && <span>Faculty</span>}
+    </NavLink>
+
+    <NavLink to="/student" className="sidebar-link">
+        <i className="bi bi-mortarboard"></i>
+        {sidebarOpen && <span>Students</span>}
+    </NavLink>
+
+    <NavLink to="/subject" className="sidebar-link">
+        <i className="bi bi-book"></i>
+        {sidebarOpen && <span>Subjects</span>}
+    </NavLink>
+
+    <NavLink to="/publications" className="sidebar-link">
+        <i className="bi bi-journal-text"></i>
+        {sidebarOpen && <span>Publications</span>}
+    </NavLink>
+
+    <NavLink to="/ipr" className="sidebar-link">
+        <i className="bi bi-award"></i>
+        {sidebarOpen && <span>IPR</span>}
+    </NavLink>
+
+    <NavLink to="/events" className="sidebar-link">
+        <i className="bi bi-calendar-event"></i>
+        {sidebarOpen && <span>Events</span>}
+    </NavLink>
+
+    {/* <NavLink to="/reports" className="sidebar-link">
+        <i className="bi bi-bar-chart"></i>
+        {sidebarOpen && <span>Reports</span>}
+    </NavLink> */}
+
+    <NavLink to="/" className="sidebar-link logout">
+        <i className="bi bi-box-arrow-right"></i>
+        {sidebarOpen && <span>Logout</span>}
+    </NavLink>
+
+</div>
+        </aside>
 
     );
 

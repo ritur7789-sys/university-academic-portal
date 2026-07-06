@@ -1,34 +1,77 @@
-function Navbar() {
+import logo from "../assets/amity_logo.png";
+import "../styles/navbar.css";
+
+function Navbar({ sidebarOpen, setSidebarOpen }) {
 
     return (
 
-        <nav className="navbar navbar-dark bg-primary shadow-sm">
+        <header className="top-navbar">
 
-            <div className="container-fluid">
+            <div className="nav-left">
 
-                <span className="navbar-brand fw-bold">
+                <i
+    className="bi bi-list menu-btn"
+    onClick={() => setSidebarOpen(!sidebarOpen)}
+></i>
 
-                    University Academic Portal
+                <img
+                    src={logo}
+                    alt="Logo"
+                    className="nav-logo"
+                />
 
-                </span>
+                <div className="nav-title">
 
-                <div className="d-flex align-items-center">
+                    <h4>University Academic Portal</h4>
 
-                    <i className="bi bi-person-circle text-white fs-4"></i>
-
-                    <span className="text-white ms-2">
-
-                        Welcome
-
-                    </span>
+                    <p>Amity University</p>
 
                 </div>
 
             </div>
 
-        </nav>
+            <div className="nav-center">
+
+                <div className="search-box">
+
+                    <i className="bi bi-search"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search Faculty, Student, Subject..."
+                    />
+
+                </div>
+
+            </div>
+
+            <div className="nav-right">
+
+                <i className="bi bi-bell nav-icon"></i>
+
+                <div className="profile">
+
+                    <img
+                        src="https://ui-avatars.com/api/?name=Admin"
+                        alt="profile"
+                    />
+
+                    <div className="profile-info">
+
+                        <h6>Admin</h6>
+
+                        <span>Administrator</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
 
     );
+
 }
 
 export default Navbar;
