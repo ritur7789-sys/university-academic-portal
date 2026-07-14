@@ -8,23 +8,17 @@ function Sidebar({ sidebarOpen }) {
 
         <aside className={`sidebar ${sidebarOpen ? "" : "collapsed"}`}>
 
-            <div className="sidebar-logo">
-
-    <img src={logo} alt="logo" />
+           <div className="sidebar-logo">
+    <img src={logo} alt="Amity Logo" />
 
     {sidebarOpen && (
-
         <div className="logo-text">
-
-            <h5>University</h5>
-
-            <small>Academic Portal</small>
-
+            <h5>Amity University</h5>
+            <small>Admin Portal</small>
         </div>
-
     )}
-
 </div>
+
 
             <div className="menu-section">
 

@@ -10,8 +10,8 @@ function Navbar({ sidebarOpen, setSidebarOpen }) {
             <div className="nav-left">
 
                 <i
-    className="bi bi-list menu-btn"
-    onClick={() => setSidebarOpen(!sidebarOpen)}
+  className="bi bi-list menu-btn"
+  onClick={() => setSidebarOpen(!sidebarOpen)}
 ></i>
 
                 <img
@@ -47,7 +47,10 @@ function Navbar({ sidebarOpen, setSidebarOpen }) {
 
             <div className="nav-right">
 
-                <i className="bi bi-bell nav-icon"></i>
+                <div className="notification">
+    <i className="bi bi-bell nav-icon"></i>
+    <span className="notification-dot"></span>
+</div>
 
                 <div className="profile">
 

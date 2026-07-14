@@ -1,7 +1,11 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
+
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+
+import "../styles/layout.css";
 
 function MainLayout() {
 
@@ -16,13 +20,13 @@ function MainLayout() {
                 setSidebarOpen={setSidebarOpen}
             />
 
-            <div className="main-container">
+            <div className="layout-body">
 
-                <Sidebar sidebarOpen={sidebarOpen} />
+                <Sidebar
+                    sidebarOpen={sidebarOpen}
+                />
 
-                <div
-                    className={`content ${sidebarOpen ? "expanded" : "collapsed"}`}
-                >
+                <main className="main-content">
 
                     <div className="page-content">
 
@@ -30,7 +34,9 @@ function MainLayout() {
 
                     </div>
 
-                </div>
+                    <Footer/>
+
+                </main>
 
             </div>
 

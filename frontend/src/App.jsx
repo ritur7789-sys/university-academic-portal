@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Faculty from "./pages/Faculty";
 import Student from "./pages/Student";
 import Subject from "./pages/Subject";
+import FacultyProfile from "./pages/FacultyProfile";
 
 function App() {
 
@@ -40,6 +41,10 @@ function App() {
                     <Route path="/student" element={<Student />} />
 
                     <Route path="/subject" element={<Subject />} />
+
+                    <Route path="/faculty" element={<Faculty />} />
+
+                    <Route path="/faculty/:id" element={<FacultyProfile />} />
 
                 </Route>
 

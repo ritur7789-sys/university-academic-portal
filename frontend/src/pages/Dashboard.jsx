@@ -43,9 +43,43 @@ function Dashboard() {
 
     return (
 
-        <div className="container-fluid">
+        
 
-            <h2 className="mb-4">Dashboard</h2>
+        <div className="dashboard-container">
+
+            <div className="dashboard-hero">
+
+    <div className="hero-left">
+
+        <span class="hero-label">Dashboard</span>
+
+       <h2>Welcome back, Admin 👋</h2>
+    <p>Here's what's happening in your University Academic Portal today.</p>
+
+    </div>
+
+    <div className="hero-right">
+
+        <div className="hero-card">
+            <h6>Today's Date</h6>
+            <span>09 July 2026</span>
+        </div>
+
+        <div className="hero-card">
+            <h6>System Status</h6>
+            <span className="active-status">🟢 Active</span>
+        </div>
+
+        <div className="hero-card">
+            <h6>Online Users</h6>
+            <span>245</span>
+        </div>
+
+    </div>
+
+</div>
+
+            {/* <h2 className="mb-4">Dashboard</h2> */}
 
             <div className="row">
 
