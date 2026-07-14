@@ -24,8 +24,9 @@
 =================================== */
 
 .left-panel {
-    flex: 1;
+    width: 55%;
     height: 100vh;
+    flex: none;
     position: relative;
 
     background-image: url("../assets/images/amity.jpeg");
@@ -67,12 +68,24 @@
 =================================== */
 
 .right-panel {
-    width: 500px;
+
+
+
+
+    width: 45%;
+
+    height: 100vh;
+
     background: #fff;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 18px 35px;
+
     overflow: hidden;
 }
 
