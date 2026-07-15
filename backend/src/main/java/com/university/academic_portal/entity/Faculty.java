@@ -18,17 +18,36 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "employee_id", unique = true, nullable = false)
-    private String employeeId;
+    @Column(name = "emp_id", unique = true, nullable = false)
+    private String empId;
 
     @Column(nullable = false)
     private String name;
-
-    private String email;
 
     private String designation;
 
     private String department;
 
+    @Column(unique = true)
+    private String email;
+
+    private String phone;
+
+    private String photo;
+
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
