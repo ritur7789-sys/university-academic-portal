@@ -53,7 +53,7 @@ readOnly
 
 <input
 className="form-control"
-value={faculty.employeeId || ""}
+value={faculty.empId || ""}
 readOnly
 />
 

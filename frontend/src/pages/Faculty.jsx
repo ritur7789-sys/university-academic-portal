@@ -4,6 +4,56 @@ import { useNavigate } from "react-router-dom";
 
 function Faculty() {
 
+    const [faculty, setFaculty] = useState({
+    empId: "",
+    name: "",
+    designation: "",
+    department: "",
+    email: "",
+    phone: "",
+    photo: ""
+});
+
+const handleChange = (e) => {
+
+    setFaculty({
+        ...faculty,
+        [e.target.name]: e.target.value
+    });
+
+};
+
+const saveFaculty = async () => {
+
+    try {
+
+        await axios.post(
+            "http://localhost:8080/api/faculty",
+            faculty
+        );
+
+        alert("Faculty Added Successfully");
+
+        fetchFaculty();
+
+        setFaculty({
+            empId: "",
+            name: "",
+            designation: "",
+            department: "",
+            email: "",
+            phone: "",
+            photo: ""
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+};
+
     const navigate = useNavigate();
 
 
@@ -33,9 +83,20 @@ function Faculty() {
 
         <div className="container mt-4">
 
-            <h2 className="mb-4">
-                Faculty List
-            </h2>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+
+    <h2 className="mb-0">Faculty List</h2>
+
+    <button
+        className="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#facultyModal"
+    >
+        <i className="bi bi-plus-circle me-2"></i>
+        Add Faculty
+    </button>
+
+</div>
 
             <table className="table table-bordered table-hover">
 
@@ -59,6 +120,126 @@ function Faculty() {
 
                 </thead>
 
+                     <div
+    className="modal fade"
+    id="facultyModal"
+>
+
+
+           
+    <div className="modal-dialog modal-lg">
+
+        <div className="modal-content">
+
+            <div className="modal-header">
+
+                <h4>Add Faculty</h4>
+
+                <button
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                ></button>
+
+            </div>
+
+            <div className="modal-body">
+
+                <div className="row">
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Employee ID"
+                            name="empId"
+                            value={faculty.empId}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Faculty Name"
+                            name="name"
+                            value={faculty.name}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Designation"
+                            name="designation"
+                            value={faculty.designation}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Department"
+                            name="department"
+                            value={faculty.department}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Email"
+                            name="email"
+                            value={faculty.email}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                    <div className="col-md-6 mb-3">
+
+                        <input
+                            className="form-control"
+                            placeholder="Phone"
+                            name="phone"
+                            value={faculty.phone}
+                            onChange={handleChange}
+                        />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div className="modal-footer">
+
+                <button
+                    className="btn btn-success"
+                    onClick={saveFaculty}
+                    data-bs-dismiss="modal"
+                >
+                    Save
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
                 <tbody>
 
 {
@@ -75,7 +256,7 @@ facultyList.map((faculty)=>(
 
     <td>{faculty.id}</td>
 
-    <td>{faculty.employeeId}</td>
+    <td>{faculty.empId}</td>
 
     <td>{faculty.name}</td>
 

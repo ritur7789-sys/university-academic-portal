@@ -40,7 +40,18 @@ public class FacultyController {
     @PutMapping("/{id}")
     public Faculty updateFaculty(@PathVariable Long id,
                                  @RequestBody Faculty faculty) {
-        return facultyService.updateFaculty(id, faculty);
+
+        Faculty existing = facultyService.getFacultyById(id);
+
+        existing.setEmpId(faculty.getEmpId());
+        existing.setName(faculty.getName());
+        existing.setDesignation(faculty.getDesignation());
+        existing.setDepartment(faculty.getDepartment());
+        existing.setEmail(faculty.getEmail());
+        existing.setPhone(faculty.getPhone());
+        existing.setPhoto(faculty.getPhoto());
+
+        return facultyService.saveFaculty(existing);
     }
 
     // Delete Faculty

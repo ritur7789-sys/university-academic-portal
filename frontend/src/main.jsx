@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 import "./styles/layout.css";
 import "./styles/dashboard.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
